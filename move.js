@@ -1,0 +1,3 @@
+OlaMundo
+print(educacao);
+<script> .
