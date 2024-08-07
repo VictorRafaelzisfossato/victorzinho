@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peças Automotivas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+        }
+        .car-section {
+            margin-bottom: 20px;
+        }
+        .car-section h2 {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        .car-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .car-section li {
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Peças Automotivas</h1>
+    </header>
+    <nav>
+        <a href="#renegade">Renegade</a>
+        <a href="#rampage">Rampage</a>
+        <a href="#compass">Compass</a>
+        <a href="#toro">Toro</a>
+        <a href="#pulse">Pulse</a>
+        <a href="#mobi">Mobi</a>
+        <a href="#argo">Argo</a>
+    </nav>
+    <div class="container">
+        <div id="renegade" class="car-section">
+            <h2>Renegade</h2>
+            <ul>
+                <li>Peça 1</li>
+                <li>Peça 2</li>
+                <li>Peça 3</li>
+            </ul>
+        </div>
+        <div id="rampage" class="car-section">
+            <h2>Rampage</h2>
+            <ul>
+                <li>Peça 1</li>
+                <li>Peça 2</li>
+                <li>Peça 3</li>
+            </ul>
+        </div>
+        <div id="compass" class="car-section">
+            <h2>Compass</h2>
+            <ul>
+                <li>Peça 1</li>
+                <li>Peça 2</li>
+                <li>Peça 3</li>
+            </ul>
+        </div>
+        <div id="toro" class="car-section">
+            <h2>Toro</h2>
+            <ul>
+                <li>Peça 1</li>
+                <li>Peça 2</li>
+                <li>Peça 3</li>
+            </ul>
+        </div>
+        <div id="pulse" class="car-section">
+            <h2>Pulse</h2>
+            <ul>
+                <li>Peça 1</li>
+                <li>Peça 2</li>
+                <li>Peça 3</li>
+            </ul>
+        </div>
+        <div id="mobi" class="car-section">
+            <h2>Mobi</h2>
+            <ul>
+                <li>Peça 1</li>
+                <li>Peça 2</li>
+                <li>Peça 3</li>
+            </ul>
+        </div>
+        <div id="argo" class="car-section">
+            <h2>Argo</h2>
+            <ul>
+                <li>Peça 1</li>
+                <li>Peça 2</li>
+                <li>Peça 3</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
