@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peças Automotivas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .car-model {
+            background-color: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #eee;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Peças Automotivas</h1>
+    </header>
+    <nav>
+        <a href="#" onclick="showSection('addPart')">Adicionar Peça</a>
+        <a href="#" onclick="showSection('partsList')">Lista de Peças</a>
+    </nav>
+    <div class="container">
+        <div id="addPart" class="section">
+            <form id="addPartForm">
+                <h2>Adicionar Peça</h2>
+                <label for="carBrand">Marca do Carro:</label>
+                <input type="text" id="carBrand" name="carBrand" required>
+                <label for="carModel">Modelo do Carro:</label>
+                <input type="text" id="carModel" name="carModel" required>
+                <label for="partName">Nome da Peça:</label>
+                <input type="text" id="partName" name="partName" required>
+                <button type="submit">Adicionar Peça</button>
+            </form>
+        </div>
+        <div id="partsList" class="section" style="display:none;">
+            <h2>Lista de Peças</h2>
+            <div id="partsContainer"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('addPartForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const carBrand = document.getElementById('carBrand').value;
+            const carModel = document.getElementById('carModel').value;
+            const partName = document.getElementById('partName').value;
+            const partsContainer = document.getElementById('partsContainer');
+
+            let carSection = document.getElementById(carBrand + carModel);
+            if (!carSection) {
+                carSection = document.createElement('div');
+                carSection.id = carBrand + carModel;
+                carSection.className = 'car-model';
+                carSection.innerHTML = `<h2>${carBrand} ${carModel}</h2><ul></ul>`;
+                partsContainer.appendChild(carSection);
+            }
+
+            const ul = carSection.querySelector('ul');
+            const li = document.createElement('li');
+            li.textContent = partName;
+            ul.appendChild(li);
+
+            document.getElementById('addPartForm').reset();
+        });
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
