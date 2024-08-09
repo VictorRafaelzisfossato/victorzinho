@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Peças Automotivas</title>
+</head>
+<style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+
+<body>
+    <h1>Loja de Peças Automotivas</h1>
+    <form action="processa_peca.php" method="post">
+        <label for="carro">Selecione o carro:</label>
+        <select name="carro" id="carro">
+            <option>renegade</option>
+            <option>rampage</option>
+            <option>compass</option>
+            <option>toro</option>
+            <option>argo</option>
+            <!-- Adicione mais opções de carros aqui -->
+        </select>
+        <br>
+        <label for="peca">Selecione a peça:</label>
+        <select name="peca" id="peca">
+            <option value="motor">Componentes relacionados ao motor, como filtros de óleo, correias, velas de ignição e bombas</option>
+            <option value="freio">Itens adicionais, como suportes para bicicletas, racks de teto e capas de proteção</option>
+            <option value="fd">Amortecedores, molas, rolamentos, pneus e rodas.</option>
+            <!-- Adicione mais opções de peças aqui -->
+        </select>
+        <br>
+        <input type="submit" value="Adicionar ao Carrinho">
+    </form>
+</body>
+</html>
