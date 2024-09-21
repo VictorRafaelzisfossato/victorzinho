@@ -71,3 +71,35 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = LoginScreen(root)
     root.mainloop()
+import tkinter as tk
+
+class CarUI:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Jeep Compass OS")
+        
+        self.label = tk.Label(root, text="Bem-vindo ao Jeep Compass OS", font=("Helvetica", 16))
+        self.label.pack(pady=20)
+        
+        self.nav_button = tk.Button(root, text="Navegação", command=self.navigation)
+        self.nav_button.pack(pady=10)
+        
+        self.media_button = tk.Button(root, text="Mídia", command=self.media)
+        self.media_button.pack(pady=10)
+        
+        self.climate_button = tk.Button(root, text="Clima", command=self.climate_control)
+        self.climate_button.pack(pady=10)
+        
+    def navigation(self):
+        print("Abrindo Navegação...")
+        
+    def media(self):
+        print("Abrindo Mídia...")
+        
+    def climate_control(self):
+        print("Abrindo Controle de Clima...")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = CarUI(root)
+    root.mainloop()
