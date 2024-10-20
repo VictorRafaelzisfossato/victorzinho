@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAgPaGe</title>
+    <style>
+        body {
+            font-family: 'comic sans ms';
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .image {
+            background-image: url("img/ssecsd.png");
+        }
+
+        h2 {
+            color: black;
+        }
+
+        #carros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #carros div {
+            width: 300px;
+            margin: 10px;
+            text-align: center;
+            background-color: rgb(207, 161, 74);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #chat-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: rgb(207, 161, 74);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .message {
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: lightblue;
+            text-align: right;
+        }
+
+        .bot-message {
+            background-color: lightgray;
+            text-align: left;
+        }
+
+        #input-container {
+            display: flex;
+        }
+
+        #chatInput {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="image"></section>
+
+    <h1>TAgPaGe</h1>
+    <img src="via cu.png" width="250">
+    <h2>Exemplo: uma BMW 320i tem problema na caixa de direção e bomba de vácuo</h2>
+
+    <!-- Campo de busca -->
+    <input type="text" id="searchInput" placeholder="Digite o nome do carro" oninput="filtrarCarros()">
+
+    <div id="carros">
+        <div alt="bmw x1">
+            <h2>bmw X1</h2>
+            <img src="img/bmw x1.jpeg" width="250">
+        </div>
+        <div alt="peugeot 206">
+            <h2>peugeot 206</h2>
+            <img src="img/peugeiot.jpg" width="250">
+        </div>
+        <div alt="GM S10">
+            <h2>chevy S10</h2>
+            <img src="img/S10.png" width="250">
+        </div>
+    </div>
+
+    <div id="chat-container">
+        <div id="messages"></div>
+
+        <div id="input-container">
+            <input type="text" id="chatInput" placeholder="Digite sua mensagem...">
+            <button onclick="enviarMensagem()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para filtrar os carros com base no texto digitado
+        function filtrarCarros() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const carros = document.querySelectorAll('#carros div');
+
+            carros.forEach(carro => {
+                const nome = carro.querySelector('h2').textContent.toLowerCase();
+                carro.style.display = nome.includes(input) ? 'block' : 'none';
+            });
+        }
+
+        // Função para adicionar mensagens ao chat
+        function adicionarMensagem(mensagem, classe) {
+            const messages = document.getElementById('messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.textContent = mensagem;
+            msgDiv.classList.add('message', classe);
+            messages.appendChild(msgDiv);
+            messages.scrollTop = messages.scrollHeight; // Rola para a última mensagem
+        }
+
+        // Função para lidar com a resposta do "bot"
+        function respostaBot(pergunta) {
+            const respostas = {
+                "oi": "Oi! Como posso te ajudar?",
+                "tudo bem?": "Tudo ótimo! E você?",
+                "qual seu nome?": "Eu sou o chatbot da TAgPaGe!",
+                "adeus": "Tchau! Volte sempre!"
+            };
+            return respostas[pergunta.toLowerCase()] || "Desculpe, não entendi. Tente novamente!";
+        }
+
+        // Função para enviar uma mensagem
+        function enviarMensagem() {
+            const input = document.getElementById('chatInput');
+            const mensagem = input.value.trim();
+
+            if (mensagem) {
+                adicionarMensagem(`Você: ${mensagem}`, 'user-message');
+                const resposta = respostaBot(mensagem);
+                setTimeout(() => {
+                    adicionarMensagem(`Bot: ${resposta}`, 'bot-message');
+                }, 500);
+                input.value = ''; // Limpa o campo de input
+            }
+        }
+
+        // Envia mensagem ao pressionar Enter
+        document.getElementById('chatInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                enviarMensagem();
+            }
+        });
+    </script>
+
+</body>
+</html>
